@@ -2,6 +2,8 @@
 
 @section('content-body')
 <section class="panel mt-3">
+    <input type="text" class="idtest">
+    <input type="text" class="test" placeholder="autocomplete ici"/>
     @if(Session::has('error'))
     <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
@@ -62,4 +64,5 @@
         </div>
     </form>
 </section>
+<script src="{{ asset('js/application/medicament/medoc.js') }}" defer></script>
 @endsection

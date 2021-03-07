@@ -30,3 +30,4 @@ Route::get('searchFrns', 'FournisseurController@findFrns')->name('fournisseur.se
 // medicament route
 Route::resource('medicament', 'MedicamentController');
 Route::get('searchMedoc', 'MedicamentController@findMedoc')->name('medicament.search');
+Route::get('medoc/test', 'MedicamentController@getData');

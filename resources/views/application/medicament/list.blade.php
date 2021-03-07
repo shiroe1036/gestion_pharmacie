@@ -4,12 +4,14 @@
 <section class="panel">
     <a href="{{ route('medicament.create') }}" class="mb-3 mt-3 btn btn-primary">Ajouter Médicament</a>
     <form action="{{ route('medicament.search') }}" method="get" class="form-inline">
-        
+
         <div class="form-group mb-3">
             <input required type="text" placeholder="recherche médicament" name="findMedoc" class="form-control " autofocus>
         </div>
-        <button type="submit" class="ml-3 btn btn-primary">search</button>
-        <a href="{{ route('medicament.index') }}" class="ml-3 btn btn-secondary">refresh</a>
+        <div class="form-group ml-3 mb-3">
+            <button type="submit" class=" btn btn-primary"><i class="ti-search"></i></button>
+            <a href="{{ route('medicament.index') }}" class="ml-3 btn btn-secondary">refresh</a>
+        </div>
     </form>
     @if(Session::has('success'))
     <div class="alert alert-success mb-1">
@@ -30,24 +32,24 @@
             </thead>
             <tbody>
                 @if(count($medocs) > 0)
-                    @foreach($medocs as $res)
-                    <tr class="text-center">
-                        <td>{{ $res->id }}</td>
-                        <td>{{ $res->nomMedoc }}</td>
-                        <td>{{ $res->famille }}}</td>
-                        <td>{{ $res->prixVente }}</td>
-                        <td>
-                            <form action="{{ route('medicament.destroy', $res->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <div class="form-group">
-                                    <button class="btn btn-danger mb-1">Suppr</button>
-                                    <a href="{{ route('medicament.edit', $res->id) }}" class="btn btn-warning">Edit</a>
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
+                @foreach($medocs as $res)
+                <tr class="text-center">
+                    <td>{{ $res->id }}</td>
+                    <td>{{ $res->nomMedoc }}</td>
+                    <td>{{ $res->famille }}}</td>
+                    <td>{{ $res->prixVente }}</td>
+                    <td>
+                        <form action="{{ route('medicament.destroy', $res->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="form-group">
+                                <button class="btn btn-danger mb-1"><i class="ti-trash"></i></button>
+                                <a href="{{ route('medicament.edit', $res->id) }}" class="btn btn-warning"><i class="ti-pencil"></i></a>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
                 @else
                 <tr class="text-center">
                     <td colspan="6">Aucun élément</td>

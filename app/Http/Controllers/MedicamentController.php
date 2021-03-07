@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Medicament;
+use App\Services\QueryGenerator;
 use Illuminate\Http\Request;
 
 class MedicamentController extends Controller
@@ -150,5 +151,30 @@ class MedicamentController extends Controller
             'famille' => 'required|between:3,25',
             'prixVente' => 'required|numeric',
         ]);
+    }
+
+    public function getData(Request $request)
+    {
+        $autoComp = [];
+
+        $where = [
+            'where' => [
+                ['nomMedoc', 'LIKE', "%{$request->get('search')}%"]
+            ]
+        ];
+
+        $data = QueryGenerator::generator('medicaments', $where)->get();
+
+        if(!empty($data))
+        {
+            foreach($data as $res){
+                $autoComp[] = [
+                    'id' => $res->id,
+                    'value' => $res->nomMedoc
+                ];
+            }
+
+            return response()->json($autoComp);
+        }
     }
 }
