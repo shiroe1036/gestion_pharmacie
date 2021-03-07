@@ -2,11 +2,11 @@
 
 @section('content-body')
 <section class="panel">
-    <a href="{{ route('medicament.create') }}" class="mb-3 mt-3 btn btn-primary">Ajouter client</a>
+    <a href="{{ route('medicament.create') }}" class="mb-3 mt-3 btn btn-primary">Ajouter Médicament</a>
     <form action="{{ route('medicament.search') }}" method="get" class="form-inline">
         
         <div class="form-group mb-3">
-            <input required type="text" placeholder="recherche médicament" name="findMedoc" class="form-control " autofocus>
+            <input required type="text" placeholder="recherche médicament" value="{{ old('findMedoc') }}" name="findMedoc" class="form-control " autofocus>
         </div>
         <button type="submit" class="ml-3 btn btn-primary">search</button>
         <a href="{{ route('medicament.index') }}" class="ml-3 btn btn-secondary">refresh</a>

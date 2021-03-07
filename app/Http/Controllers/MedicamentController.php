@@ -27,7 +27,7 @@ class MedicamentController extends Controller
 
         $medocs->appends('searchMedoc', $request['nomMedoc']);
 
-        return view('application.medicament.list', compact($medocs));
+        return view('application.medicament.list', compact('medocs'));
     }
 
     /**
