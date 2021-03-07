@@ -45,12 +45,12 @@
                         <td>{{ $res->email }}</td>
                         <td>{{ $res->adresse }}</td>
                         <td>
-                            <form action="{{ route('fournisseur.destroy', ['id' => $res->id]) }}" method="post">
+                            <form action="{{ route('fournisseur.destroy', $res->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <div class="form-group">
                                     <button class="btn btn-danger mb-1">Suppr</button>
-                                    <a href="{{ route('fournisseur.edit', ['id' => $res->id]) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('fournisseur.edit', $res->id) }}" class="btn btn-warning">Edit</a>
                                 </div>
                             </form>
                         </td>

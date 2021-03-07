@@ -39,12 +39,12 @@
                         <td>{{ $res->email }}</td>
                         <td>{{ $res->adresse }}</td>
                         <td>
-                            <form action="{{ route('client.destroy', ['id' => $res->id]) }}" method="post">
+                            <form action="{{ route('client.destroy', $res->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <div class="form-group">
                                     <button class="btn btn-danger mb-1">Suppr</button>
-                                    <a href="{{ route('client.edit', ['id' => $res->id]) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('client.edit', $res->id) }}" class="btn btn-warning">Edit</a>
                                 </div>
                             </form>
                         </td>

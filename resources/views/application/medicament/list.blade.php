@@ -6,7 +6,7 @@
     <form action="{{ route('medicament.search') }}" method="get" class="form-inline">
         
         <div class="form-group mb-3">
-            <input required type="text" placeholder="recherche médicament" value="{{ old('findMedoc') }}" name="findMedoc" class="form-control " autofocus>
+            <input required type="text" placeholder="recherche médicament" name="findMedoc" class="form-control " autofocus>
         </div>
         <button type="submit" class="ml-3 btn btn-primary">search</button>
         <a href="{{ route('medicament.index') }}" class="ml-3 btn btn-secondary">refresh</a>
@@ -37,12 +37,12 @@
                         <td>{{ $res->famille }}}</td>
                         <td>{{ $res->prixVente }}</td>
                         <td>
-                            <form action="{{ route('medicament.destroy', ['id' => $res->id]) }}" method="post">
+                            <form action="{{ route('medicament.destroy', $res->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <div class="form-group">
                                     <button class="btn btn-danger mb-1">Suppr</button>
-                                    <a href="{{ route('medicament.edit', ['id' => $res->id]) }}" class="btn btn-warning">Edit</a>
+                                    <a href="{{ route('medicament.edit', $res->id) }}" class="btn btn-warning">Edit</a>
                                 </div>
                             </form>
                         </td>

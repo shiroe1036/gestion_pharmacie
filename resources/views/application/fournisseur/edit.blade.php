@@ -8,7 +8,7 @@
         <p>{{ Session('error') }}</p>
     </div>
     @endif
-    <form action="{{ route('fournisseur.update', ['id' => $data->id]) }}" method="post">
+    <form action="{{ route('fournisseur.update', $data->id) }}" method="post">
         @csrf
         @method('PATCH')
         <div class="panel-body">
